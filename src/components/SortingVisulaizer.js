@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import { getbubbleSortAnimations } from "../algorithms/bubbleSort";
+import { getInsertionSortAnimations } from "../algorithms/insertionSort";
 import { getMergeSortAnimations } from "../algorithms/mergeSort";
+import { getQuickSortAnimations } from "../algorithms/quickSort";
 import {
   ACCESSED_COLOUR,
   ARR_LEN,
@@ -29,17 +32,24 @@ const SortingVisulaizer = () => {
     setArr(newArr);
   };
 
+  const bubbleSort = () => {
+    const animations = getbubbleSortAnimations(arr);
+    animateArrayUpdate(animations);
+  };
+
+  const insertionSort = () => {
+    const animations = getInsertionSortAnimations(arr);
+    animateArrayUpdate(animations);
+  };
+
   const mergeSort = () => {
     const animations = getMergeSortAnimations(arr);
     animateArrayUpdate(animations);
   };
 
-  const insertionSort = () => {
-    console.log("insert Sort");
-  };
-
   const quickSort = () => {
-    console.log("quick Sort");
+    const animations = getQuickSortAnimations(arr);
+    animateArrayUpdate(animations);
   };
 
   useEffect(initialiseArray, []);
@@ -90,7 +100,7 @@ const SortingVisulaizer = () => {
       const arrayBarStyle = arrayBars[i].style;
       setTimeout(
         () => (arrayBarStyle.backgroundColor = SORTED_COLOUR),
-        i * DELAY
+        i * DELAY + DELAY
       );
     }
     setTimeout(() => {
@@ -124,13 +134,18 @@ const SortingVisulaizer = () => {
             </button>
           </li>
           <li>
-            <button className="app-button" onClick={mergeSort}>
-              Merge sort
+            <button className="app-button" onClick={bubbleSort}>
+              Bubble sort
             </button>
           </li>
           <li>
             <button className="app-button" onClick={insertionSort}>
               Insertion sort
+            </button>
+          </li>
+          <li>
+            <button className="app-button" onClick={mergeSort}>
+              Merge sort
             </button>
           </li>
           <li>
