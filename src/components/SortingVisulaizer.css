@@ -5,25 +5,27 @@
 
 .array-container {
   flex: 1;
-  align-items: center;
   display: flex;
   margin-top: auto;
 }
 
 .array-bar {
   background-color: blueviolet;
-  border-radius: 0.5em;
-  margin: 0.15%;
+  border-radius: 0 0 0.5em 0.5em;
+  margin: 0 0.15%;
 }
 
 .app-footer,
 .app-header {
   padding: 1rem;
   display: flex;
-  justify-content: center;
   align-items: center;
   overflow-x: auto;
   background-color: #333;
+}
+
+.app-header {
+  justify-content: center;
 }
 
 .app-header h1 {
